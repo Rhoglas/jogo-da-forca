@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
@@ -6,6 +5,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
+    <!-- icone da pagina -->
     <link
       rel="shortcut icon"
       href="assets/icons/logo.png"
@@ -25,55 +25,39 @@
     <title>Jogo da forca</title>
   </head>
   <body>
-    <header>
-      <h1 class="titulo">Jogo da Forca</h1>
-    </header>
-    <main>
-      <!-- contador de tentativas restantes -->
-      <p id="attempts">Tentativas : <span id="remainingAttempts"> 6 </span></p>
-      <!-- imagem da forca -->
-      <section class="hangman-container">
+    <section id="cont-game">
+      <header id="header-game">
+        <h2>Jogo da Forca</h2>
+      </header>
+      <main id="main-game">
         <!-- Desenho da forca -->
-      </section>
-      <!-- botões de acerto e erro -->
-      <section class="word-container">
-        <div id="word"></div>
-        <p>DICA : <span id="category"></span></p>
-      </section>
-      <!-- resposta do usuário -->
-      <section class="guess-container">
-        <button
-          class="button"
-          id="restartButton"
+        <div class="hangman-container"></div>
+        <!-- palavra secreta e dica -->
+        <div class="word-container">
+          <p id="attempts">
+            Tentativas restantes: <span id="remainingAttempts">6</span>
+          </p>
+          <div id="word"></div>
+          <p>Dica: <span id="category"></span></p>
+        </div>
+        <!-- teclado -->
+        <div
+          id="keyboard"
+          class="keyboard"
         >
-          Reiniciar
-        </button>
-
-        <input
-          type="text"
-          id="guessInput"
-          maxlength="1"
-        />
-        <button
-          class="button"
-          id="guessButton"
-        >
-          Start
-        </button>
-      </section>
-      <!-- lista de letras usadas -->
-      <div id="usedLetters">Letras usadas : <span id="letters"></span></div>
-    </main>
+          <!-- Os botões do teclado serão gerados aqui -->
+        </div>
+        <button id="restartButton">Reiniciar</button>
+      </main>
+    </section>
     <section class="sectionCont">
       <!-- criar dinamicamente -->
-      </section>
     </section>
-    <footer>
-      <a
-        class="portifolio"
-        href="http://rhoglas.cloud"
-        >@rhoglas</a
-      >
+    <footer id="footer-game">
+      <p>
+        Code developer :
+        <a href="http://rhoglas.cloud"> 🐙 Rhoglas Aragão 🐙</a>
+      </p>
     </footer>
   </body>
 </html>

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap");
 
 :root {
   --color-1: #ffb300;
@@ -9,19 +9,7 @@
   --color-6: #23b315;
 
   scroll-behavior: smooth;
-  font-family: "Space Grotesk", sans-serif;
-}
-
-body {
-  background-color: var(--color-1);
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  padding: 1.5rem;
-
-  height: 100vh;
+  font-family: "Silkscreen", cursive;
 }
 
 * {
@@ -29,10 +17,23 @@ body {
   padding: 0px;
   box-sizing: border-box;
 }
+body {
+  background-color: var(--color-1);
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
 
 /* alerts */
 .sectionCont {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
   position: absolute;
+  padding: 2rem;
+  text-align: center;
+  height: 70vh;
 }
 .alertCont {
   font-weight: bold;
@@ -40,9 +41,7 @@ body {
   padding: 0.5rem 1rem;
   margin: 1rem 0;
   border: 2px solid var(--color-5);
-
   color: var(--color-4);
-  /* border: 2px solid var(--color-4);  */
 }
 #error {
   background-color: var(--color-2);
@@ -55,29 +54,46 @@ body {
   background-color: var(--color-6);
   color: var(--color-5);
 }
-/* titulo */
-.titulo {
-  background-color: var(--color-5);
-  border: 2px solid var(--color-4);
+
+/* tela do jogo */
+#cont-game {
+  background-image: url("../assets/icons/bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: 3px solid var(--color-4);
   border-radius: 0.3rem;
-  box-shadow: 5px 5px 0px 0px var(--color-4);
-  padding: 0.3rem 1rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem;
+  width: 410px;
+  max-width: 500px;
 }
 
-/* contador de jogadas */
-#attempts {
-  background-color: var(--color-2);
-  border: 0.2rem solid var(--color-4);
+/* cabeçalho do jogo */
+#header-game {
+  background-color: var(--color-4);
+  border: 2px solid var(--color-4);
   border-radius: 0.3rem;
-  color: var(--color-4);
-  display: inline-block;
+  box-shadow: 5px 5px 0px 0px var(--color-2);
+  color: var(--color-2);
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
   padding: 0.5rem 1rem;
-  font-weight: bold;
-  margin: 0.5rem 0;
+  margin: 1rem 0 0;
+  line-height: 2rem;
+  text-align: center;
+  width: 185px;
 }
-#remainingAttempts {
-  color: var(--color-5);
+
+/* main game */
+#main-game {
+  text-align: center;
 }
+
 /* imagem */
 .hangman-container {
   border-radius: 0.3rem;
@@ -88,99 +104,119 @@ body {
   filter: drop-shadow(10px 5px 7px var(--color-4));
 }
 .forcaImg {
-  height: 18rem;
+  height: 15rem;
 }
-/* palavras secretas e dicas */
+
+/* teclado */
+#keyboard {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 1rem 0;
+  gap: 0.6rem;
+}
+.key {
+  background-color: var(--color-2);
+  border: 2px solid var(--color-4);
+  border-radius: 0.2rem;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  transition: all 300ms ease-in;
+  font-weight: bolder;
+  z-index: 2;
+}
+.key:disabled {
+  opacity: 0.5;
+  border: 2px solid var(--color-5);
+  color: var(--color-5);
+}
+.key:hover {
+  background-color: var(--color-1);
+  transform: scale(1.1);
+}
+/* tentativas */
+#attempts {
+  background-color: var(--color-5);
+  border: 2px solid var(--color-4);
+  border-radius: 0.3rem;
+  padding: 1rem;
+}
+/* palavra secreta */
 .word-container {
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: center;
 
-  padding: 1rem;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 #word {
-  background-color: var(--color-5);
-  border: 0.2rem solid var(--color-4);
-  border-radius: 0.3rem;
-  text-align: center;
-  padding: 0.5rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-.word-container > p {
-  text-decoration: underline;
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: var(--color-4);
-}
-/* Controlhes do jogo */
-.guess-container {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-}
-#guessInput {
-  border: none;
-  padding: 0;
-  outline: none;
-  width: 3rem;
-  padding: 0.5rem;
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-
-  border: 2px solid var(--color-4);
-  box-shadow: 5px 5px 0px 0px var(--color-4);
-  border-radius: 0.3rem;
-  transition: 0.3s;
-}
-.button {
-  background-color: #ff8800;
-  border: 2px solid var(--color-4);
-  border-radius: 0.3rem;
-  box-shadow: 5px 5px 0px 0px var(--color-4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 18px;
-  width: 99px;
-  height: 40px;
-  font-weight: bold;
-
-  transition: 0.3s;
-}
-
-.button:hover {
-  box-shadow: 0 0 var(--color-4);
-  color: var(--color-4);
-  background-color: #ff8800;
-}
-/* lista de letras que ja foram usadas */
-#usedLetters {
-  background-color: #fff;
-  border-radius: 0.3rem;
-  border: 0.2rem solid var(--color-4);
-  font-weight: 500;
-  margin: 1rem 0;
-  padding: 0.5rem 0.3rem;
-}
-#letters {
-  color: var(--color-2);
-}
-/* rodapé */
-.portifolio {
   background-color: var(--color-4);
-  border-radius: 0.2rem;
+  border: 0.2rem solid var(--color-4);
+  border-radius: 0.3rem;
   color: var(--color-5);
-  padding: 0.2rem 1rem;
-  text-decoration: none;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 1.2rem;
 }
-.portifolio:hover {
+
+/* reiniciar jogo */
+#restartButton {
+  background-color: var(--color-4);
+  border: 2px solid var(--color-4);
+  border-radius: 0.3rem;
+  box-shadow: 4px 4px 0px 0px var(--color-2);
   color: var(--color-2);
-  transition: all 700ms;
+  cursor: pointer;
+  line-height: 1;
+  font-size: 16px;
+  width: 90px;
+  height: 35px;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  margin: 0 0 1rem;
+}
+#restartButton:hover {
+  box-shadow: 0 0 var(--color-4);
+  color: var(--color-5);
+}
+#footer-game {
+  width: 100vw;
+  margin: 0 0 1.5rem;
+}
+#footer-game > p {
+  background-color: var(--color-4);
+  color: var(--color-5);
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 13px;
+  justify-content: center;
+  margin: 1rem 0 0;
+  padding: 0.2rem 0.5rem;
+}
+
+#footer-game > p > a {
+  color: var(--color-2);
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+#footer-game > p > a:hover {
+  color: var(--color-5);
+}
+
+@media (max-width: 440px) {
+  #cont-game {
+    width: 90%;
+    padding: 0.5rem;
+  }
+  #attempts {
+    padding: 0.3rem 1rem;
+    width: 80%;
+  }
+  #keyboard {
+    padding: 1rem;
+  }
 }
